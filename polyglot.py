@@ -1,8 +1,7 @@
+from flask import Flask, jsonify, request, session
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 import unittest
-from flask import Flask, session
-from app import create_app, db
-from models.user import User
-from werkzeug.security import generate_password_hash
 
 class AuthTestCase(unittest.TestCase):
     def setUp(self):

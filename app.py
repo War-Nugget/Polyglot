@@ -102,12 +102,30 @@ class AppTestCase(unittest.TestCase):
         # Test logging in the same user
         response = self.client.post('/login', data={'email': 'test@example.com', 'password': 'test1234'})
         self.assertEqual(response.status_code, 200)
+        
+    # def test_logout(self):
+    # # Set up by registering and logging in a user
+    #     self.client.post('/signup', data={'email': 'logout@example.com', 'password': 'password'})
+    #     login_response = self.client.post('/login', data={'email': 'logout@example.com', 'password': 'password'})
+    #     self.assertEqual(login_response.status_code, 200, "Login failed or did not return status code 200")
+
+    #     # Perform the logout
+    #     logout_response = self.client.get('/logout')
+    #     self.assertEqual(logout_response.status_code, 200, "Logout failed or did not return status code 200")
+
+    #     # Optionally, check if the session has been cleared (if applicable)
+    #     followup_response = self.client.get('/some_authenticated_route')
+    #     self.assertEqual(followup_response.status_code, 401, "User session was not properly cleared after logout")
+
+   
 
     def test_progress_update(self):
         # Setup a user and a topic
         self.client.post('/signup', data={'email': 'progress@example.com', 'password': 'password'})
         self.client.post('/login', data={'email' : 'progress@example.com', 'password': 'password'})
 
+
+        
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
